@@ -436,7 +436,7 @@ def send_messages(config, automation_state, user_id, process_id='AUTO-1'):
     return 'button_not_found';
 """)
                 
-                if sent == 'button_not_found':
+           if sent == 'button_not_found':
     log_message(f'{process_id}: Send button not found — forcing Enter/Ctrl+Enter...', automation_state)
     driver.execute_script("""
         const element = arguments[0];
@@ -451,10 +451,9 @@ def send_messages(config, automation_state, user_id, process_id='AUTO-1'):
         ];
         enterEvents.forEach(ev => element.dispatchEvent(ev));
     """, message_input)
+else:
+    log_message(f'{process_id}: Send button clicked', automation_state)
 
-                else:
-                    log_message(f'{process_id}: Send button clicked', automation_state)
-                
                 time.sleep(1)
                 
                 messages_sent += 1
